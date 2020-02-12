@@ -1,41 +1,32 @@
-answer = 5
+# MODULES
+import random
 
-print("Please guess number between 1 and 10: ")
+highest = 1000 # highest number in random range decalred as variable (to be used in multiple locations)
+answer = random.randint(1, highest) # generates random number between 1 and 10
+guess = 0 # initialize to any number that doesn't equal the answer
 
-# wrapping input() within int() casts the input as a integer
-guess = int(input())
+print("Please guess number between 1 and {}: ".format(highest))
 
-# Refactor
-if guess == answer:
-    print("You got it first time")
-else:
-    if guess < answer:
-        print("Please guess higher")
-    else: # guess must be greater than answer
-        print("Please guess lower")
+# LOGIC
+while guess != answer:
+    # new guess
     guess = int(input())
+
+    # Quitting option
+    if guess == 0:
+        print("Thank you for playing, please try again another time!")
+        break
+
+    # Just right
     if guess == answer:
         print("Well done, you guessed it")
+        break
+
     else:
-        print("Sorry, you have not guess correctly")
+        # too high
+        if guess < answer:
+            print("Please guess higher")
 
-# Old Code
-# if guess < answer:
-#     print("Please guess higher")
-#     # second guess added
-#     guess = int(input())
-#     if guess == answer:
-#         print("Well done, you guessed it")
-#     else:
-#         print("Sorry, you have not guessed correctly")
-# elif guess > answer:
-#     print("Please guess lower")
-
-#     # second guess added
-#     guess = int(input())
-#     if guess == answer:
-#         print("Well done, you guessed it")
-#     else:
-#         print("Sorry, you have not guessed correctly")
-# else:
-#     print("You got it first time")
+        # too low
+        else:
+            print("Please guess lower")
